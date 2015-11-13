@@ -1,0 +1,22 @@
+# ------------------------------------------------------------------------
+# Before run nmake it's needed to install SDK
+# from here http://www.microsoft.com/en-us/download/details.aspx?id=8279
+#
+# then in build environment console exec :
+#  nmake -f Makefile.win all
+#
+TARGET=qdbc.mexw64
+MATLAB=C:\Program Files\MATLAB\R2015a
+
+all:$(TARGET)
+
+$(TARGET):qdbc.obj
+	link /nologo /manifest /DLL /EXPORT:mexFunction qdbc.obj kx/c.obj ws2_32.lib  /LIBPATH:"$(MATLAB)\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /out:$(TARGET)
+	mt -outputresource:$(TARGET);2 -manifest $(TARGET).manifest
+	del qdbc.exp qdbc.obj qdbc.lib $(TARGET).manifest qdbc.ilk
+
+qdbc.obj:
+	cl /c /GR /W3 /EHs /nologo /MD -I"$(MATLAB)\extern\include" -I"$(MATLAB)\simulink\include" /DMX_COMPAT_32 /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0 /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG qdbc.c /Fo qdbc.obj
+
+clean:
+	del $(TARGET)
