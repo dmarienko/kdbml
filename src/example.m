@@ -20,6 +20,11 @@ toc
 plot(t.time, (t.ask-t.bid)./(t.ask+t.bid));
 datetick('x','HH:MM:SS')
 
+% - or create 5 min OHLC candlestick chart
+Q('aapl:select time,mid:(bid+ask)%2 from t where sym=`AAPL');
+ohlc = Q('select open:first mid, high:max mid, low:min mid, close:last mid by 5 xbar time:time.minute from aapl');
+candle(ohlc.high',ohlc.low',ohlc.close',ohlc.open','b', ohlc.time', 'HH:MM');
+
 % - note that kdbml transfers date/time to matlab date/time presentation
 d = Q('2011.08.11 + til 10')
 datestr(d)
