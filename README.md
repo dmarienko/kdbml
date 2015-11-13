@@ -1,2 +1,3 @@
 # kdbml
-Native connector between KDB and Matlab
+Native connector between KDB and Matlab.
+
