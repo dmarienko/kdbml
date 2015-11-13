@@ -40,3 +40,6 @@ disp(class(s10))
 % - it also provides transparent access to kdb dictionaries
 dic = Q('`a`b`c!1 2 3')
 disp(dic.a)
+
+% - matrices
+mx = cell2mat(Q('(1 2 3; 4 5 6)'))
