@@ -6,5 +6,9 @@ function [k] = qopen(varargin)
     host = 'localhost';
     if nargin >= 1, port = varargin{1}; end
     if nargin >= 2, host = varargin{1}; port = varargin{2}; end
-	k = struct('host', host, 'port', port);
+	hs = struct('host', host, 'port', port);
+
+    % return query lamba
+    function r = Q(q), r = qdbc(hs, q); end
+    k = @Q;
 end

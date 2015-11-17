@@ -1,8 +1,8 @@
 % - Some examples of using kdbml library
 
 % - setup some helper functions
-k = qopen('localhost', 5555);  % your kdb server should be run on localhost on port 5555
-Q = @(q) qdbc(k, q);
+Q = qopen('localhost', 5555);  % your kdb server should be run on localhost:5555
+	                           % c:/q/w32/q.exe -p 5555
 
 % - now we are ready to send queries to KDB -
 

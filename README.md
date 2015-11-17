@@ -2,7 +2,7 @@
 Native connector between KDB and Matlab. This library provides access to KDB/Q database from Matlab. Existing Matlab kx connector is terrifically slow
 and it's very hard to load big datasets from KDB to Matlab.
 Also existing kx Matlab connector doesn't support some KDB constructions like dictionaries and list of lists etc.
-This library is written in C and compiled to Matlam MEX file providing very fast data transmition speed.
+This library is written in C and compiled to Matlab MEX file providing very fast data transmition speed.
 
 ## How to make
 
