@@ -444,7 +444,7 @@ mxArray* makedict(K x) {
         else if (res->t >= 0 && res->t <= 19) pout[0] = makelist(res);
         else if (res->t == 98) pout[0] = maketab(res);
         else if (res->t == 99) pout[0] = makedict(res);
-        else if (res->t == 101) mexPrintf("::\n");
+        else if (res->t == 101) { pout[0] = mxCreateLogicalScalar(true); mexPrintf("::\n");} // when void query result return t
         else mexPrintf("%s >> Type %d is not supported\n", MATID, res->t);
       } else mexPrintf("%s >> KDB error : %s\n", MATID, res->s);
     } else {
