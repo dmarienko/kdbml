@@ -21,10 +21,10 @@ all: clean libs
 libs: qdbc.${EXT}
 
 %.o: %c
-    ${CC} ${CFLAGS} -c -o$@ $<
+	${CC} ${CFLAGS} -c -o$@ $<
 
 %.${EXT}:%.o
-    ${LD} ${LDFLAGS} -o$@ $< kx/c.o ${LIBS}
+	${LD} ${LDFLAGS} -o$@ $< kx/c.o ${LIBS}
 
 clean:
-    @rm -f *.o *.${EXT}
+	@rm -f *.o *.${EXT}
